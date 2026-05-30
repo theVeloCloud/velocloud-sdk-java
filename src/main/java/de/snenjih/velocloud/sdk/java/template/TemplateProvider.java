@@ -1,10 +1,10 @@
-package dev.httpmarco.polocloud.sdk.java.template;
+package de.snenjih.velocloud.sdk.java.template;
 
-import dev.httpmarco.polocloud.sdk.java.utils.FutureConverter;
-import dev.httpmarco.polocloud.shared.template.SharedTemplateProvider;
-import dev.httpmarco.polocloud.shared.template.Template;
-import dev.httpmarco.polocloud.v1.templates.TemplateControllerGrpc;
-import dev.httpmarco.polocloud.v1.templates.TemplateFindRequest;
+import de.snenjih.velocloud.sdk.java.utils.FutureConverter;
+import de.snenjih.velocloud.shared.template.SharedTemplateProvider;
+import de.snenjih.velocloud.shared.template.Template;
+import de.snenjih.velocloud.v1.templates.TemplateControllerGrpc;
+import de.snenjih.velocloud.v1.templates.TemplateFindRequest;
 import io.grpc.ManagedChannel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

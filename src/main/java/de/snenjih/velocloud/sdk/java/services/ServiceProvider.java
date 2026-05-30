@@ -1,15 +1,15 @@
-package dev.httpmarco.polocloud.sdk.java.services;
+package de.snenjih.velocloud.sdk.java.services;
 
-import dev.httpmarco.polocloud.sdk.java.Polocloud;
-import dev.httpmarco.polocloud.sdk.java.utils.FutureConverter;
-import dev.httpmarco.polocloud.shared.groups.Group;
-import dev.httpmarco.polocloud.shared.service.Service;
-import dev.httpmarco.polocloud.shared.service.SharedBootConfiguration;
-import dev.httpmarco.polocloud.shared.service.SharedServiceProvider;
-import dev.httpmarco.polocloud.shared.template.Template;
-import dev.httpmarco.polocloud.v1.groups.GroupType;
-import dev.httpmarco.polocloud.v1.services.*;
-import dev.httpmarco.polocloud.v1.templates.TemplateSnapshot;
+import de.snenjih.velocloud.sdk.java.Velocloud;
+import de.snenjih.velocloud.sdk.java.utils.FutureConverter;
+import de.snenjih.velocloud.shared.groups.Group;
+import de.snenjih.velocloud.shared.service.Service;
+import de.snenjih.velocloud.shared.service.SharedBootConfiguration;
+import de.snenjih.velocloud.shared.service.SharedServiceProvider;
+import de.snenjih.velocloud.shared.template.Template;
+import de.snenjih.velocloud.v1.groups.GroupType;
+import de.snenjih.velocloud.v1.services.*;
+import de.snenjih.velocloud.v1.templates.TemplateSnapshot;
 import io.grpc.ManagedChannel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -77,7 +77,7 @@ public final class ServiceProvider implements SharedServiceProvider<Service> {
     @NotNull
     @Override
     public ServiceSnapshot bootInstanceWithConfiguration(@NotNull String name, @NotNull SharedBootConfiguration configuration) {
-        Group group = Polocloud.instance().groupProvider().find(name);
+        Group group = Velocloud.instance().groupProvider().find(name);
         if(group == null) {
             throw new IllegalStateException("Group not found");
         }

@@ -1,4 +1,4 @@
-package dev.httpmarco.polocloud.sdk.java.utils;
+package de.snenjih.velocloud.sdk.java.utils;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;

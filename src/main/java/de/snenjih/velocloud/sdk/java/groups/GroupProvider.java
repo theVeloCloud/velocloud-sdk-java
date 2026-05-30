@@ -1,9 +1,9 @@
-package dev.httpmarco.polocloud.sdk.java.groups;
+package de.snenjih.velocloud.sdk.java.groups;
 
-import dev.httpmarco.polocloud.sdk.java.utils.FutureConverter;
-import dev.httpmarco.polocloud.shared.groups.Group;
-import dev.httpmarco.polocloud.shared.groups.SharedGroupProvider;
-import dev.httpmarco.polocloud.v1.groups.*;
+import de.snenjih.velocloud.sdk.java.utils.FutureConverter;
+import de.snenjih.velocloud.shared.groups.Group;
+import de.snenjih.velocloud.shared.groups.SharedGroupProvider;
+import de.snenjih.velocloud.v1.groups.*;
 import io.grpc.ManagedChannel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

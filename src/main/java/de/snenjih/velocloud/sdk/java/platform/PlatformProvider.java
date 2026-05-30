@@ -1,10 +1,10 @@
-package dev.httpmarco.polocloud.sdk.java.platform;
+package de.snenjih.velocloud.sdk.java.platform;
 
-import dev.httpmarco.polocloud.shared.platform.Platform;
-import dev.httpmarco.polocloud.shared.platform.SharedPlatformProvider;
-import dev.httpmarco.polocloud.v1.groups.GroupType;
-import dev.httpmarco.polocloud.v1.platform.PlatformControllerGrpc;
-import dev.httpmarco.polocloud.v1.platform.PlatformFindRequest;
+import de.snenjih.velocloud.shared.platform.Platform;
+import de.snenjih.velocloud.shared.platform.SharedPlatformProvider;
+import de.snenjih.velocloud.v1.groups.GroupType;
+import de.snenjih.velocloud.v1.platform.PlatformControllerGrpc;
+import de.snenjih.velocloud.v1.platform.PlatformFindRequest;
 import io.grpc.ManagedChannel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

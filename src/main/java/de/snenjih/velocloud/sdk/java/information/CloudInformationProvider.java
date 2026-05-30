@@ -1,9 +1,9 @@
-package dev.httpmarco.polocloud.sdk.java.information;
+package de.snenjih.velocloud.sdk.java.information;
 
-import dev.httpmarco.polocloud.shared.information.AggregateCloudInformation;
-import dev.httpmarco.polocloud.shared.information.SharedCloudInformationProvider;
-import dev.httpmarco.polocloud.shared.information.CloudInformation;
-import dev.httpmarco.polocloud.v1.information.*;
+import de.snenjih.velocloud.shared.information.AggregateCloudInformation;
+import de.snenjih.velocloud.shared.information.SharedCloudInformationProvider;
+import de.snenjih.velocloud.shared.information.CloudInformation;
+import de.snenjih.velocloud.v1.information.*;
 import io.grpc.ManagedChannel;
 import org.jetbrains.annotations.NotNull;
 

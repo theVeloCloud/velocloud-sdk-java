@@ -1,12 +1,12 @@
-package dev.httpmarco.polocloud.sdk.java.player;
+package de.snenjih.velocloud.sdk.java.player;
 
 import com.google.protobuf.Empty;
-import dev.httpmarco.polocloud.sdk.java.Polocloud;
-import dev.httpmarco.polocloud.sdk.java.utils.FutureConverter;
-import dev.httpmarco.polocloud.shared.player.PolocloudPlayer;
-import dev.httpmarco.polocloud.shared.player.SharedPlayerProvider;
-import dev.httpmarco.polocloud.shared.service.Service;
-import dev.httpmarco.polocloud.v1.player.*;
+import de.snenjih.velocloud.sdk.java.Velocloud;
+import de.snenjih.velocloud.sdk.java.utils.FutureConverter;
+import de.snenjih.velocloud.shared.player.VelocloudPlayer;
+import de.snenjih.velocloud.shared.player.SharedPlayerProvider;
+import de.snenjih.velocloud.shared.service.Service;
+import de.snenjih.velocloud.v1.player.*;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.StreamObserver;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +17,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-public class PlayerProvider implements SharedPlayerProvider<PolocloudPlayer> {
+public class PlayerProvider implements SharedPlayerProvider<VelocloudPlayer> {
 
     private final PlayerControllerGrpc.PlayerControllerStub stub;
     private final PlayerControllerGrpc.PlayerControllerBlockingStub blockingStub;
@@ -30,39 +30,39 @@ public class PlayerProvider implements SharedPlayerProvider<PolocloudPlayer> {
     }
 
     @Override
-    public @NotNull List<PolocloudPlayer> findAll() {
-        return this.blockingStub.findAll(Empty.getDefaultInstance()).getPlayersList().stream().map(PolocloudPlayer.Companion::from).toList();
+    public @NotNull List<VelocloudPlayer> findAll() {
+        return this.blockingStub.findAll(Empty.getDefaultInstance()).getPlayersList().stream().map(VelocloudPlayer.Companion::from).toList();
     }
 
     @Override
-    public @NotNull CompletableFuture<List<PolocloudPlayer>> findAllAsync() {
-        return FutureConverter.completableFromGuava(this.futureStub.findAll(Empty.getDefaultInstance()), findAllPlayerResponse -> findAllPlayerResponse.getPlayersList().stream().map(PolocloudPlayer.Companion::from).toList());
+    public @NotNull CompletableFuture<List<VelocloudPlayer>> findAllAsync() {
+        return FutureConverter.completableFromGuava(this.futureStub.findAll(Empty.getDefaultInstance()), findAllPlayerResponse -> findAllPlayerResponse.getPlayersList().stream().map(VelocloudPlayer.Companion::from).toList());
     }
 
     @Override
     @Nullable
-    public PolocloudPlayer findByName(@NotNull String name) {
-        return this.blockingStub.findByName(PlayerFindByNameRequest.newBuilder().setName(name).build()).getPlayersList().stream().map(PolocloudPlayer.Companion::from).findFirst().orElse(null);
+    public VelocloudPlayer findByName(@NotNull String name) {
+        return this.blockingStub.findByName(PlayerFindByNameRequest.newBuilder().setName(name).build()).getPlayersList().stream().map(VelocloudPlayer.Companion::from).findFirst().orElse(null);
     }
 
     @Override
     @NotNull
-    public CompletableFuture<PolocloudPlayer> findByNameAsync(@NotNull String name) {
+    public CompletableFuture<VelocloudPlayer> findByNameAsync(@NotNull String name) {
         return FutureConverter.completableFromGuava(this.futureStub.findByName(PlayerFindByNameRequest.newBuilder().setName(name).build()),
-                findGroupResponse -> findGroupResponse.getPlayersList().stream().map(PolocloudPlayer.Companion::from).findFirst().orElse(null));
+                findGroupResponse -> findGroupResponse.getPlayersList().stream().map(VelocloudPlayer.Companion::from).findFirst().orElse(null));
     }
 
     @Override
     @NotNull
-    public List<PolocloudPlayer> findByService(@NotNull String serviceName) {
-        return this.blockingStub.findByService(PlayerFindByServiceRequest.newBuilder().setCurrentServiceName(serviceName).build()).getPlayersList().stream().map(PolocloudPlayer.Companion::from).toList();
+    public List<VelocloudPlayer> findByService(@NotNull String serviceName) {
+        return this.blockingStub.findByService(PlayerFindByServiceRequest.newBuilder().setCurrentServiceName(serviceName).build()).getPlayersList().stream().map(VelocloudPlayer.Companion::from).toList();
     }
 
     @Override
     @NotNull
-    public CompletableFuture<List<PolocloudPlayer>> findByServiceAsync(@NotNull Service service) {
+    public CompletableFuture<List<VelocloudPlayer>> findByServiceAsync(@NotNull Service service) {
         return FutureConverter.completableFromGuava(this.futureStub.findByService(PlayerFindByServiceRequest.newBuilder().setCurrentServiceName(service.name()).build()),
-                findByServiceRequest -> findByServiceRequest.getPlayersList().stream().map(PolocloudPlayer.Companion::from).toList());
+                findByServiceRequest -> findByServiceRequest.getPlayersList().stream().map(VelocloudPlayer.Companion::from).toList());
     }
 
     @Override
@@ -87,18 +87,18 @@ public class PlayerProvider implements SharedPlayerProvider<PolocloudPlayer> {
     }
 
     @Override
-    public @Nullable PolocloudPlayer findByUniqueId(@NotNull UUID uuid) {
-        return this.blockingStub.findByUniqueID(PlayerFindByUniqueIdRequest.newBuilder().setUniqueId(uuid.toString()).build()).getPlayersList().stream().map(PolocloudPlayer.Companion::from).findFirst().orElse(null);
+    public @Nullable VelocloudPlayer findByUniqueId(@NotNull UUID uuid) {
+        return this.blockingStub.findByUniqueID(PlayerFindByUniqueIdRequest.newBuilder().setUniqueId(uuid.toString()).build()).getPlayersList().stream().map(VelocloudPlayer.Companion::from).findFirst().orElse(null);
     }
 
     @Override
-    public @NotNull CompletableFuture<PolocloudPlayer> findByUniqueIdAsync(@NotNull UUID uuid) {
+    public @NotNull CompletableFuture<VelocloudPlayer> findByUniqueIdAsync(@NotNull UUID uuid) {
         return FutureConverter.completableFromGuava(this.futureStub.findByUniqueID(PlayerFindByUniqueIdRequest.newBuilder().setUniqueId(uuid.toString()).build()),
-                findGroupResponse -> findGroupResponse.getPlayersList().stream().map(PolocloudPlayer.Companion::from).findFirst().orElse(null));
+                findGroupResponse -> findGroupResponse.getPlayersList().stream().map(VelocloudPlayer.Companion::from).findFirst().orElse(null));
     }
 
     public void verifyActorStreaming(Consumer<StreamingAlert> nextActor) {
-        stub.withWaitForReady().actorStreaming(PlayerActorIdentifier.newBuilder().setServiceName(Polocloud.instance().selfServiceName()).build(), new StreamObserver<>() {
+        stub.withWaitForReady().actorStreaming(PlayerActorIdentifier.newBuilder().setServiceName(Velocloud.instance().selfServiceName()).build(), new StreamObserver<>() {
             @Override
             public void onNext(StreamingAlert streamingAlert) {
                 nextActor.accept(streamingAlert);

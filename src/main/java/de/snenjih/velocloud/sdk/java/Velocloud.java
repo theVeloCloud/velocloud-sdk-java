@@ -1,54 +1,54 @@
-package dev.httpmarco.polocloud.sdk.java;
+package de.snenjih.velocloud.sdk.java;
 
-import dev.httpmarco.polocloud.sdk.java.events.EventProvider;
-import dev.httpmarco.polocloud.sdk.java.groups.GroupProvider;
-import dev.httpmarco.polocloud.sdk.java.platform.PlatformProvider;
-import dev.httpmarco.polocloud.sdk.java.player.PlayerProvider;
-import dev.httpmarco.polocloud.sdk.java.services.ServiceProvider;
-import dev.httpmarco.polocloud.sdk.java.information.CloudInformationProvider;
-import dev.httpmarco.polocloud.sdk.java.template.TemplateProvider;
-import dev.httpmarco.polocloud.shared.PolocloudShared;
-import dev.httpmarco.polocloud.shared.events.SharedEventProvider;
-import dev.httpmarco.polocloud.shared.groups.Group;
-import dev.httpmarco.polocloud.shared.groups.SharedGroupProvider;
-import dev.httpmarco.polocloud.shared.platform.Platform;
-import dev.httpmarco.polocloud.shared.platform.SharedPlatformProvider;
-import dev.httpmarco.polocloud.shared.player.PolocloudPlayer;
-import dev.httpmarco.polocloud.shared.player.SharedPlayerProvider;
-import dev.httpmarco.polocloud.shared.service.Service;
-import dev.httpmarco.polocloud.shared.service.SharedServiceProvider;
-import dev.httpmarco.polocloud.shared.information.SharedCloudInformationProvider;
-import dev.httpmarco.polocloud.shared.information.CloudInformation;
-import dev.httpmarco.polocloud.shared.template.SharedTemplateProvider;
-import dev.httpmarco.polocloud.shared.template.Template;
+import de.snenjih.velocloud.sdk.java.events.EventProvider;
+import de.snenjih.velocloud.sdk.java.groups.GroupProvider;
+import de.snenjih.velocloud.sdk.java.platform.PlatformProvider;
+import de.snenjih.velocloud.sdk.java.player.PlayerProvider;
+import de.snenjih.velocloud.sdk.java.services.ServiceProvider;
+import de.snenjih.velocloud.sdk.java.information.CloudInformationProvider;
+import de.snenjih.velocloud.sdk.java.template.TemplateProvider;
+import de.snenjih.velocloud.shared.VelocloudShared;
+import de.snenjih.velocloud.shared.events.SharedEventProvider;
+import de.snenjih.velocloud.shared.groups.Group;
+import de.snenjih.velocloud.shared.groups.SharedGroupProvider;
+import de.snenjih.velocloud.shared.platform.Platform;
+import de.snenjih.velocloud.shared.platform.SharedPlatformProvider;
+import de.snenjih.velocloud.shared.player.VelocloudPlayer;
+import de.snenjih.velocloud.shared.player.SharedPlayerProvider;
+import de.snenjih.velocloud.shared.service.Service;
+import de.snenjih.velocloud.shared.service.SharedServiceProvider;
+import de.snenjih.velocloud.shared.information.SharedCloudInformationProvider;
+import de.snenjih.velocloud.shared.information.CloudInformation;
+import de.snenjih.velocloud.shared.template.SharedTemplateProvider;
+import de.snenjih.velocloud.shared.template.Template;
 import io.grpc.ManagedChannel;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoopGroup;
 import io.grpc.netty.shaded.io.netty.channel.socket.nio.NioSocketChannel;
 import org.jetbrains.annotations.NotNull;
 
-public final class Polocloud extends PolocloudShared {
+public final class Velocloud extends VelocloudShared {
 
-    private static Polocloud instance;
+    private static Velocloud instance;
 
     private final SharedEventProvider eventProvider;
     private final SharedServiceProvider<Service> serviceProvider;
     private final SharedGroupProvider<Group> groupProvider;
-    private final SharedPlayerProvider<PolocloudPlayer> playerProvider;
+    private final SharedPlayerProvider<VelocloudPlayer> playerProvider;
     private final SharedCloudInformationProvider<CloudInformation> cloudInformationProvider;
     private final SharedPlatformProvider<Platform> platformProvider;
     private final SharedTemplateProvider<Template> templateProvider;
 
     private final String serviceName;
 
-    public static Polocloud instance() {
+    public static Velocloud instance() {
         if (instance == null) {
-            new Polocloud();
+            new Velocloud();
         }
         return instance;
     }
 
-    Polocloud() {
+    Velocloud() {
         this(null,
                 System.getenv().containsKey("agent_hostname") ? System.getenv("agent_hostname") : "127.0.0.1",
                 System.getenv().containsKey("agent_port") ? Integer.parseInt(System.getenv("agent_port")) : 8932,
@@ -57,7 +57,7 @@ public final class Polocloud extends PolocloudShared {
     }
 
     //for off premise bridges
-    public Polocloud(String serviceName, String agentHostname, int agentPort, boolean setShared) {
+    public Velocloud(String serviceName, String agentHostname, int agentPort, boolean setShared) {
         super(setShared);
         this.serviceName = serviceName;
 

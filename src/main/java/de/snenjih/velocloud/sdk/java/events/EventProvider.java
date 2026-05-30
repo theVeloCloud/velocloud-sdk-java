@@ -1,11 +1,11 @@
-package dev.httpmarco.polocloud.sdk.java.events;
+package de.snenjih.velocloud.sdk.java.events;
 
-import dev.httpmarco.polocloud.sdk.java.Polocloud;
-import dev.httpmarco.polocloud.shared.events.Event;
-import dev.httpmarco.polocloud.shared.events.EventCallback;
-import dev.httpmarco.polocloud.shared.events.SharedEventProvider;
-import dev.httpmarco.polocloud.v1.proto.EventProviderGrpc;
-import dev.httpmarco.polocloud.v1.proto.EventProviderOuterClass;
+import de.snenjih.velocloud.sdk.java.Velocloud;
+import de.snenjih.velocloud.shared.events.Event;
+import de.snenjih.velocloud.shared.events.EventCallback;
+import de.snenjih.velocloud.shared.events.SharedEventProvider;
+import de.snenjih.velocloud.v1.proto.EventProviderGrpc;
+import de.snenjih.velocloud.v1.proto.EventProviderOuterClass;
 import io.grpc.ManagedChannel;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
@@ -15,11 +15,11 @@ import org.jetbrains.annotations.NotNull;
 public final class EventProvider extends SharedEventProvider {
 
     private final EventProviderGrpc.EventProviderStub eventStub;
-    private final Polocloud polocloud;
+    private final Velocloud velocloud;
 
-    public EventProvider(ManagedChannel channel, Polocloud polocloud) {
+    public EventProvider(ManagedChannel channel, Velocloud velocloud) {
         this.eventStub = EventProviderGrpc.newStub(channel);
-        this.polocloud = polocloud;
+        this.velocloud = velocloud;
     }
 
     @Override
@@ -56,7 +56,7 @@ public final class EventProvider extends SharedEventProvider {
     public <T extends Event> void subscribe(@NotNull Class<T> eventType, @NotNull EventCallback<T> result) {
         EventProviderOuterClass.EventSubscribeRequest request =
                 EventProviderOuterClass.EventSubscribeRequest.newBuilder()
-                        .setServiceName(polocloud.selfServiceName())
+                        .setServiceName(velocloud.selfServiceName())
                         .setEventName(eventType.getSimpleName())
                         .build();
 
