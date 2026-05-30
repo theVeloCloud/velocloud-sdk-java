@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "de.snenjih.velocloud"
-version = "3.0.0-pre.8-SNAPSHOT"
+version = "3.0.5"
 
 repositories {
     mavenLocal()
