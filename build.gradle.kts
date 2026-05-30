@@ -29,8 +29,8 @@ dependencies {
     api("de.snenjih.velocloud:proto:$version")
     api("de.snenjih.velocloud:shared:$version")
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.3.0")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:2.3.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.3.21")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:2.3.21")
 
     compileOnly("com.google.code.gson:gson:2.13.2")
     compileOnly("org.jetbrains:annotations:26.0.2-1")
