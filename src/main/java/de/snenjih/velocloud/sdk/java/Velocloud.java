@@ -1,5 +1,6 @@
 package de.snenjih.velocloud.sdk.java;
 
+import de.snenjih.velocloud.sdk.java.database.DatabaseProvider;
 import de.snenjih.velocloud.sdk.java.events.EventProvider;
 import de.snenjih.velocloud.sdk.java.groups.GroupProvider;
 import de.snenjih.velocloud.sdk.java.platform.PlatformProvider;
@@ -38,6 +39,7 @@ public final class Velocloud extends VelocloudShared {
     private final SharedCloudInformationProvider<CloudInformation> cloudInformationProvider;
     private final SharedPlatformProvider<Platform> platformProvider;
     private final SharedTemplateProvider<Template> templateProvider;
+    private final DatabaseProvider databaseProvider;
 
     private final String serviceName;
 
@@ -78,6 +80,11 @@ public final class Velocloud extends VelocloudShared {
         this.cloudInformationProvider = new CloudInformationProvider(channel);
         this.platformProvider = new PlatformProvider(channel);
         this.templateProvider = new TemplateProvider(channel);
+        this.databaseProvider = new DatabaseProvider(channel);
+    }
+
+    public DatabaseProvider databaseProvider() {
+        return this.databaseProvider;
     }
 
     public String selfServiceName() {

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "de.snenjih.velocloud"
-version = "3.0.6"
+version = "3.0.7"
 
 repositories {
     mavenLocal()
@@ -29,6 +29,8 @@ tasks.shadowJar {
 dependencies {
     api("io.grpc:grpc-services:1.78.0")
     api("io.grpc:grpc-netty-shaded:1.78.0")
+    api("com.zaxxer:HikariCP:5.1.0")
+    api("com.mysql:mysql-connector-j:9.3.0")
 
     api("de.snenjih.velocloud:proto:$version")
     api("de.snenjih.velocloud:shared:$version")
