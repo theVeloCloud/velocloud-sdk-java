@@ -27,8 +27,8 @@ tasks.shadowJar {
 }
 
 dependencies {
-    api("io.grpc:grpc-services:1.78.0")
-    api("io.grpc:grpc-netty-shaded:1.78.0")
+    api("io.grpc:grpc-services:1.81.0")
+    api("io.grpc:grpc-netty-shaded:1.81.0")
     api("com.zaxxer:HikariCP:5.1.0")
     api("com.mysql:mysql-connector-j:9.3.0")
 
